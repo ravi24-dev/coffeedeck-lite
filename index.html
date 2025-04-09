@@ -3,69 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CoffeeDeck Lite</title>
+  <title>CoffeeDeck Dashboard</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="https://emojiapi.dev/api/v1/2615/64.png" />
-  <meta name="description" content="CoffeeDeck – a minimalist browser-based productivity tool with text utilities, sticky notes, and quick link launcher. Built for coffee breaks.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-
-  <header style="text-align: center; margin-bottom: 1rem;">
-    <h1 style="font-size: 26px; margin: 0;">☕ CoffeeDeck</h1>
-    <p style="font-size: 14px; color: #555;">Your chill productivity dashboard – made for coffee breaks.</p>
-  </header>
-
-  <div class="tabs">
-    <button onclick="showTab('text')">🛠 Text Tools</button>
-    <button onclick="showTab('links')">📌 Quick Links</button>
-    <button onclick="showTab('notes')">📝 Notes</button>
-  </div>
-
-  <div id="text" class="tab">
-    <h2>Text Tools</h2>
-    <textarea id="textInput" rows="6" placeholder="Paste your text here..."></textarea>
-    <div class="buttons">
-      <button onclick="toUpper()">UPPERCASE</button>
-      <button onclick="toLower()">lowercase</button>
-      <button onclick="removeDuplicates()">Remove Duplicates</button>
-      <button onclick="trimSpaces()">Trim Spaces</button>
+  <div class="dashboard">
+    <div class="topbar">
+      <h1>☕ CoffeeDeck</h1>
+      <div class="tabs">
+        <button onclick="showTab('text')">🛠 Text Tools</button>
+        <button onclick="showTab('links')">📌 Quick Links</button>
+        <button onclick="showTab('notes')">📝 Notes</button>
+      </div>
     </div>
-    <p id="textStats"></p>
+
+    <div id="text" class="tab glass active">
+      <h2>Text Tools</h2>
+      <textarea id="textInput" rows="6" placeholder="Paste your text here..."></textarea>
+      <div class="buttons">
+        <button onclick="toUpper()">UPPERCASE</button>
+        <button onclick="toLower()">lowercase</button>
+        <button onclick="removeDuplicates()">Remove Duplicates</button>
+        <button onclick="trimSpaces()">Trim Spaces</button>
+      </div>
+      <p id="textStats"></p>
+    </div>
+
+    <div id="links" class="tab glass">
+      <h2>Quick Links</h2>
+      <div id="linksContainer"></div>
+      <input type="text" id="linkLabel" placeholder="Name (e.g. Gmail)">
+      <input type="url" id="linkURL" placeholder="https://example.com">
+      <button onclick="addLink()">+ Add Link</button>
+    </div>
+
+    <div id="notes" class="tab glass">
+      <h2>Your Notes</h2>
+      <textarea id="noteArea" rows="10" placeholder="Write your notes here..."></textarea>
+      <button onclick="clearNotes()">🗑 Clear All</button>
+    </div>
+
+    <footer>
+      <p>Made with ☕ during coffee breaks.</p>
+      <a href="https://buymeacoffee.com/coffeedeck" target="_blank" class="money-btn">☕ Support on Buy Me a Coffee</a>
+    </footer>
   </div>
-
-  <div id="links" class="tab hidden">
-    <h2>Quick Links</h2>
-    <div id="linksContainer"></div>
-    <input type="text" id="linkLabel" placeholder="Name (e.g. Gmail)">
-    <input type="url" id="linkURL" placeholder="https://example.com">
-    <button onclick="addLink()">+ Add Link</button>
-  </div>
-
-  <div id="notes" class="tab hidden">
-    <h2>Your Notes</h2>
-    <textarea id="noteArea" rows="10" placeholder="Write your notes here..."></textarea>
-    <button onclick="clearNotes()">🗑 Clear All</button>
-  </div>
-
-  <footer>
-    <p>Like this tool? Support it 💛</p>
-    <a href="https://www.buymeacoffee.com/coffeedeck" target="_blank" class="money-btn">☕ Buy Me a Coffee</a>
-    <p style="margin-top: 10px; font-size: 12px;">© 2025 CoffeeDeck. All Rights Reserved.</p>
-  </footer>
-
-  <!-- Optional: Floating BMC widget (remove if you only want the link) -->
-  <!-- 
-  <script data-name="BMC-Widget" data-cfasync="false"
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-    data-id="coffeedeck"
-    data-description="Support me on Buy Me a Coffee!"
-    data-message="Thank you for using my tool!"
-    data-color="#FFDD00"
-    data-position="right"
-    data-x_margin="18"
-    data-y_margin="18">
-  </script>
-  -->
 
   <script src="script.js"></script>
 </body>
