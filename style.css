@@ -1,0 +1,53 @@
+﻿body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 1rem;
+  max-width: 600px;
+  margin: auto;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  margin-right: 5px;
+  border: none;
+  background: #ddd;
+  cursor: pointer;
+}
+
+.tabs button:hover {
+  background: #ccc;
+}
+
+.tab {
+  margin-top: 1rem;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: monospace;
+}
+
+button {
+  margin: 5px 5px 0 0;
+  padding: 8px 12px;
+  border: none;
+  background: #222;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #444;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  margin-top: 2rem;
+  text-align: center;
+}

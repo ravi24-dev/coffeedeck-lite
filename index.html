@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CoffeeDeck Lite</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="tabs">
+    <button onclick="showTab('text')">🛠 Text Tools</button>
+    <button onclick="showTab('links')">📌 Quick Links</button>
+    <button onclick="showTab('notes')">📝 Notes</button>
+  </div>
+
+  <div id="text" class="tab">
+    <h2>Text Tools</h2>
+    <textarea id="textInput" rows="6" placeholder="Paste your text here..."></textarea>
+    <div class="buttons">
+      <button onclick="toUpper()">UPPERCASE</button>
+      <button onclick="toLower()">lowercase</button>
+      <button onclick="removeDuplicates()">Remove Duplicates</button>
+      <button onclick="trimSpaces()">Trim Spaces</button>
+    </div>
+    <p id="textStats"></p>
+  </div>
+
+  <div id="links" class="tab hidden">
+    <h2>Quick Links</h2>
+    <div id="linksContainer"></div>
+    <input type="text" id="linkLabel" placeholder="Name (e.g. Gmail)">
+    <input type="url" id="linkURL" placeholder="https://example.com">
+    <button onclick="addLink()">+ Add Link</button>
+  </div>
+
+  <div id="notes" class="tab hidden">
+    <h2>Your Notes</h2>
+    <textarea id="noteArea" rows="10" placeholder="Write your notes here..."></textarea>
+    <button onclick="clearNotes()">🗑 Clear All</button>
+  </div>
+
+  <footer>
+    <a href="https://buymeacoffee.com/YOURNAME" target="_blank">☕ Buy Me a Coffee</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
