@@ -1,12 +1,20 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CoffeeDeck Lite</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="https://emojiapi.dev/api/v1/2615/64.png" />
+  <meta name="description" content="CoffeeDeck – a minimalist browser-based productivity tool with text utilities, sticky notes, and quick link launcher. Built for coffee breaks.">
 </head>
 <body>
+
+  <header style="text-align: center; margin-bottom: 1rem;">
+    <h1 style="font-size: 26px; margin: 0;">☕ CoffeeDeck</h1>
+    <p style="font-size: 14px; color: #555;">Your chill productivity dashboard – made for coffee breaks.</p>
+  </header>
+
   <div class="tabs">
     <button onclick="showTab('text')">🛠 Text Tools</button>
     <button onclick="showTab('links')">📌 Quick Links</button>
@@ -40,8 +48,24 @@
   </div>
 
   <footer>
-    <a href="https://buymeacoffee.com/coffeedeck" target="_blank">☕ Buy Me a Coffee</a>
+    <p>Like this tool? Support it 💛</p>
+    <a href="https://www.buymeacoffee.com/coffeedeck" target="_blank" class="money-btn">☕ Buy Me a Coffee</a>
+    <p style="margin-top: 10px; font-size: 12px;">© 2025 CoffeeDeck. All Rights Reserved.</p>
   </footer>
+
+  <!-- Optional: Floating BMC widget (remove if you only want the link) -->
+  <!-- 
+  <script data-name="BMC-Widget" data-cfasync="false"
+    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+    data-id="coffeedeck"
+    data-description="Support me on Buy Me a Coffee!"
+    data-message="Thank you for using my tool!"
+    data-color="#FFDD00"
+    data-position="right"
+    data-x_margin="18"
+    data-y_margin="18">
+  </script>
+  -->
 
   <script src="script.js"></script>
 </body>
