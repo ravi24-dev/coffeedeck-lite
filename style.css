@@ -135,3 +135,46 @@ footer {
   from {opacity: 0; transform: translateY(10px);}
   to {opacity: 1; transform: translateY(0);}
 }
+/* === DARK MODE === */
+body.dark-mode {
+  background: linear-gradient(120deg, #121212, #2c2c2c);
+  color: #eee;
+}
+
+body.dark-mode textarea,
+body.dark-mode input,
+body.dark-mode .glass {
+  background: rgba(255, 255, 255, 0.05);
+  color: #eee;
+}
+
+body.dark-mode .tabs button {
+  background: #333;
+  color: #fff;
+}
+
+body.dark-mode .tabs button:hover {
+  background: #444;
+}
+
+body.dark-mode .money-btn,
+body.dark-mode .buttons button,
+body.dark-mode #links button {
+  background: #ffc107;
+  color: #111;
+}
+
+/* Toggle button top-right */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.theme-toggle button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: inherit;
+}
