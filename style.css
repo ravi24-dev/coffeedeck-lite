@@ -77,18 +77,29 @@ textarea {
   resize: vertical;
 }
 
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+}
+
 .buttons button,
-.money-btn,
-#links button {
+#links button,
+.money-btn {
+  flex: 1 1 calc(50% - 10px); /* 2 buttons per row with spacing */
   background: #ffdd57;
   color: #111;
-  padding: 10px 14px;
+  padding: 12px;
   border: none;
   border-radius: 8px;
-  margin: 4px 4px 10px 0;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.2s ease;
+  min-width: 120px;
+  text-align: center;
+}
+
 }
 
 .buttons button:hover,
