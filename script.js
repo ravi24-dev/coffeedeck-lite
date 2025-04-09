@@ -79,4 +79,21 @@ document.addEventListener('DOMContentLoaded', () => {
   renderLinks();
   loadNotes();
   showTab('text');
+  initTheme(); // Add this line at the bottom of your DOMContentLoaded block
+
 });
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.getElementById('themeBtn');
+  const isDark = body.classList.toggle('dark-mode');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  btn.innerText = isDark ? '☀️' : '🌙';
+}
+
+function initTheme() {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') {
+    document.body.classList.add('dark-mode');
+    document.getElementById('themeBtn').innerText = '☀️';
+  }
+}
