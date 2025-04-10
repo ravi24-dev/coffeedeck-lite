@@ -1,9 +1,9 @@
 function showTab(tab) {
-  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active', 'hidden'));
   document.getElementById(tab).classList.add('active');
 }
 
-// TEXT TOOLS
+// === TEXT TOOLS ===
 function toUpper() {
   const input = document.getElementById('textInput');
   input.value = input.value.toUpperCase();
@@ -36,14 +36,13 @@ function updateStats() {
   document.getElementById('textStats').innerText = `Words: ${words} | Characters: ${text.length}`;
 }
 
-// QUICK LINKS
+// === QUICK LINKS ===
 function addLink() {
   const label = document.getElementById('linkLabel').value;
   let url = document.getElementById('linkURL').value;
 
   if (!label || !url) return;
 
-  // Add https:// if missing
   if (!url.startsWith('http://') && !url.startsWith('https://')) {
     url = 'https://' + url;
   }
@@ -52,10 +51,9 @@ function addLink() {
   links.push({ label, url });
   localStorage.setItem('quickLinks', JSON.stringify(links));
   renderLinks();
-
-  // Clear inputs (optional)
   document.getElementById('linkLabel').value = '';
   document.getElementById('linkURL').value = '';
+  showToast('✅ Link added!');
 }
 
 function renderLinks() {
@@ -70,7 +68,13 @@ function renderLinks() {
   });
 }
 
-// NOTES
+function clearAllLinks() {
+  localStorage.removeItem('quickLinks');
+  renderLinks();
+  showToast('🧹 All links cleared!');
+}
+
+// === NOTES ===
 function loadNotes() {
   const noteArea = document.getElementById('noteArea');
   noteArea.value = localStorage.getItem('notes') || '';
@@ -82,16 +86,16 @@ function loadNotes() {
 function clearNotes() {
   document.getElementById('noteArea').value = '';
   localStorage.removeItem('notes');
+  showToast('🗑 Notes cleared!');
 }
 
-// INIT
-document.addEventListener('DOMContentLoaded', () => {
-  renderLinks();
-  loadNotes();
-  showTab('text');
-  initTheme(); // Add this line at the bottom of your DOMContentLoaded block
+function saveNotes() {
+  const notes = document.getElementById('noteArea').value;
+  localStorage.setItem('notes', notes);
+  showToast('✅ Notes saved!');
+}
 
-});
+// === DARK MODE ===
 function toggleTheme() {
   const body = document.body;
   const btn = document.getElementById('themeBtn');
@@ -107,22 +111,8 @@ function initTheme() {
     document.getElementById('themeBtn').innerText = '☀️';
   }
 }
-// Clears all saved quick links
-function clearAllLinks() {
-  localStorage.removeItem('quickLinks');
-  renderLinks();
-  showToast('🧹 All links cleared!');
-}
 
-}
-
-// Optional manual note saving (visual feedback could be added later)
-function saveNotes() {
-  const notes = document.getElementById('noteArea').value;
-  localStorage.setItem('notes', notes);
-  showToast('✅ Notes saved!');
-
-}
+// === TOAST SYSTEM ===
 function showToast(message) {
   const toast = document.getElementById('toast');
   toast.innerText = message;
@@ -131,3 +121,43 @@ function showToast(message) {
     toast.classList.remove('show');
   }, 2500);
 }
+
+// === PDF EXTRACT ===
+document.addEventListener('change', function (e) {
+  if (e.target.id === 'pdfFile') {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function () {
+      const typedarray = new Uint8Array(this.result);
+      pdfjsLib.getDocument(typedarray).promise.then(pdf => {
+        let text = '';
+        const maxPages = pdf.numPages;
+        let count = 0;
+
+        for (let i = 1; i <= maxPages; i++) {
+          pdf.getPage(i).then(page => {
+            page.getTextContent().then(content => {
+              content.items.forEach(item => text += item.str + ' ');
+              count++;
+              if (count === maxPages) {
+                document.getElementById('pdfOutput').value = text.trim();
+                showToast('📄 PDF text extracted!');
+              }
+            });
+          });
+        }
+      });
+    };
+    reader.readAsArrayBuffer(file);
+  }
+});
+
+// === INIT ===
+document.addEventListener('DOMContentLoaded', () => {
+  renderLinks();
+  loadNotes();
+  showTab('text');
+  initTheme();
+});
