@@ -39,13 +39,23 @@ function updateStats() {
 // QUICK LINKS
 function addLink() {
   const label = document.getElementById('linkLabel').value;
-  const url = document.getElementById('linkURL').value;
+  let url = document.getElementById('linkURL').value;
+
   if (!label || !url) return;
+
+  // Add https:// if missing
+  if (!url.startsWith('http://') && !url.startsWith('https://')) {
+    url = 'https://' + url;
+  }
 
   const links = JSON.parse(localStorage.getItem('quickLinks') || '[]');
   links.push({ label, url });
   localStorage.setItem('quickLinks', JSON.stringify(links));
   renderLinks();
+
+  // Clear inputs (optional)
+  document.getElementById('linkLabel').value = '';
+  document.getElementById('linkURL').value = '';
 }
 
 function renderLinks() {
