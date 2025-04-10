@@ -168,3 +168,4 @@ document.addEventListener('DOMContentLoaded', () => {
   showTab('text');
   initTheme();
 });
+console.log("Tabs loaded and ready!");
