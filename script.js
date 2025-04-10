@@ -107,3 +107,15 @@ function initTheme() {
     document.getElementById('themeBtn').innerText = '☀️';
   }
 }
+// Clears all saved quick links
+function clearAllLinks() {
+  localStorage.removeItem('quickLinks');
+  renderLinks();
+}
+
+// Optional manual note saving (visual feedback could be added later)
+function saveNotes() {
+  const notes = document.getElementById('noteArea').value;
+  localStorage.setItem('notes', notes);
+  alert('✅ Notes saved!');
+}
