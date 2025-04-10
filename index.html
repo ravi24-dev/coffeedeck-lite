@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CoffeeDeck Dashboard</title>
+  <title>CoffeeDeck</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="https://emojiapi.dev/api/v1/2615/64.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
@@ -11,15 +11,15 @@
 <body>
   <div class="dashboard">
     <div class="topbar">
-      <div class="theme-toggle">
-  <button id="themeBtn" onclick="toggleTheme()">🌙</button>
-</div>
-
       <h1>☕ CoffeeDeck</h1>
       <div class="tabs">
         <button onclick="showTab('text')">🛠 Text Tools</button>
         <button onclick="showTab('links')">📌 Quick Links</button>
         <button onclick="showTab('notes')">📝 Notes</button>
+        <button onclick="showTab('pdf')">📄 PDF Clean</button>
+      </div>
+      <div class="theme-toggle">
+        <button id="themeBtn" onclick="toggleTheme()">🌙</button>
       </div>
     </div>
 
@@ -35,23 +35,26 @@
       <p id="textStats"></p>
     </div>
 
-    <div id="links" class="tab glass">
+    <div id="links" class="tab glass hidden">
       <h2>Quick Links</h2>
-    <p class="instructions">
-        Use the "Quick Links" section to add your favorite websites or tools for easy and fast access. Click the <strong>+ Add Link</strong> button to create your shortcuts.
-        <br><br>
       <div id="linksContainer"></div>
       <input type="text" id="linkLabel" placeholder="Name (e.g. Gmail)">
-      <input type="url" id="linkURL" placeholder="https://example.com">
+      <input type="text" id="linkURL" placeholder="https://example.com">
       <button onclick="addLink()">+ Add Link</button>
-      <button onclick="clearAllLinks()" style="background:#f44336;color:white;">🧹 Clear All Links</button>
-   </div>
+      <button onclick="clearAllLinks()" class="danger-btn">🧹 Clear All Links</button>
+    </div>
 
-    <div id="notes" class="tab glass">
+    <div id="notes" class="tab glass hidden">
       <h2>Your Notes</h2>
       <textarea id="noteArea" rows="10" placeholder="Write your notes here..."></textarea>
-      <button onclick="clearNotes()">🗑 Clear All</button>
+      <button onclick="clearNotes()" class="danger-btn">🗑 Clear All</button>
       <button onclick="saveNotes()">💾 Save Notes</button>
+    </div>
+
+    <div id="pdf" class="tab glass hidden">
+      <h2>PDF Text Cleaner</h2>
+      <input type="file" id="pdfFile" accept="application/pdf" />
+      <textarea id="pdfOutput" rows="10" placeholder="Extracted text will appear here..."></textarea>
     </div>
 
     <footer>
@@ -60,8 +63,8 @@
     </footer>
   </div>
 
-  <script src="script.js"></script>
   <div id="toast" class="toast"></div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
