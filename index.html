@@ -44,12 +44,14 @@
       <input type="text" id="linkLabel" placeholder="Name (e.g. Gmail)">
       <input type="url" id="linkURL" placeholder="https://example.com">
       <button onclick="addLink()">+ Add Link</button>
-    </div>
+      <button onclick="clearAllLinks()" style="background:#f44336;color:white;">🧹 Clear All Links</button>
+   </div>
 
     <div id="notes" class="tab glass">
       <h2>Your Notes</h2>
       <textarea id="noteArea" rows="10" placeholder="Write your notes here..."></textarea>
       <button onclick="clearNotes()">🗑 Clear All</button>
+      <button onclick="saveNotes()">💾 Save Notes</button>
     </div>
 
     <footer>
