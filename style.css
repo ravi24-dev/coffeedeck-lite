@@ -15,6 +15,34 @@ body {
   overflow-x: hidden;
 }
 
+body.dark-mode {
+  background: linear-gradient(120deg, #121212, #2c2c2c);
+  color: #eee;
+}
+
+body.dark-mode textarea,
+body.dark-mode input,
+body.dark-mode .glass {
+  background: rgba(255, 255, 255, 0.05);
+  color: #eee;
+}
+
+body.dark-mode .tabs button {
+  background: #333;
+  color: #fff;
+}
+
+body.dark-mode .tabs button:hover {
+  background: #444;
+}
+
+body.dark-mode .money-btn,
+body.dark-mode .buttons button,
+body.dark-mode #links button {
+  background: #ffc107;
+  color: #111;
+}
+
 .dashboard {
   max-width: 800px;
   margin: auto;
@@ -24,11 +52,26 @@ body {
 .topbar {
   text-align: center;
   margin-bottom: 20px;
+  position: relative;
 }
 
 .topbar h1 {
   font-size: 2rem;
   margin-bottom: 10px;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.theme-toggle button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: inherit;
 }
 
 .tabs {
@@ -76,7 +119,6 @@ textarea {
   resize: vertical;
 }
 
-/* Buttons group layout */
 .buttons {
   display: flex;
   flex-wrap: wrap;
@@ -116,6 +158,22 @@ textarea {
   color: #fff;
 }
 
+.danger-btn {
+  background: #f44336;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 10px;
+}
+
+.danger-btn:hover {
+  background: #e53935;
+}
+
 footer {
   text-align: center;
   font-size: 13px;
@@ -131,53 +189,6 @@ footer {
   box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(10px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-/* === DARK MODE === */
-body.dark-mode {
-  background: linear-gradient(120deg, #121212, #2c2c2c);
-  color: #eee;
-}
-
-body.dark-mode textarea,
-body.dark-mode input,
-body.dark-mode .glass {
-  background: rgba(255, 255, 255, 0.05);
-  color: #eee;
-}
-
-body.dark-mode .tabs button {
-  background: #333;
-  color: #fff;
-}
-
-body.dark-mode .tabs button:hover {
-  background: #444;
-}
-
-body.dark-mode .money-btn,
-body.dark-mode .buttons button,
-body.dark-mode #links button {
-  background: #ffc107;
-  color: #111;
-}
-
-/* Toggle button top-right */
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-.theme-toggle button {
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: inherit;
-}
 .toast {
   position: fixed;
   bottom: 30px;
@@ -198,3 +209,7 @@ body.dark-mode #links button {
   transform: translateY(-10px);
 }
 
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
