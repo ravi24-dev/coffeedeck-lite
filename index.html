@@ -47,14 +47,20 @@
     <div id="notes" class="tab glass hidden">
       <h2>Your Notes</h2>
       <textarea id="noteArea" rows="10" placeholder="Write your notes here..."></textarea>
-      <button onclick="clearNotes()" class="danger-btn">🗑 Clear All</button>
-      <button onclick="saveNotes()">💾 Save Notes</button>
+      <div class="buttons">
+        <button onclick="clearNotes()" class="danger-btn">🗑 Clear All</button>
+        <button onclick="saveNotes()">💾 Save Notes</button>
+      </div>
     </div>
 
     <div id="pdf" class="tab glass hidden">
       <h2>PDF Text Cleaner</h2>
       <input type="file" id="pdfFile" accept="application/pdf" />
       <textarea id="pdfOutput" rows="10" placeholder="Extracted text will appear here..."></textarea>
+      <div class="buttons">
+        <button onclick="clearPDFText()" class="danger-btn">🧹 Clear</button>
+        <button onclick="downloadPDF()">📤 Download as PDF</button>
+      </div>
     </div>
 
     <footer>
@@ -64,7 +70,9 @@
   </div>
 
   <div id="toast" class="toast"></div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
