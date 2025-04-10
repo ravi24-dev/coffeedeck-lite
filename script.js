@@ -111,13 +111,17 @@ function initTheme() {
 function clearAllLinks() {
   localStorage.removeItem('quickLinks');
   renderLinks();
+  showToast('🧹 All links cleared!');
+}
+
 }
 
 // Optional manual note saving (visual feedback could be added later)
 function saveNotes() {
   const notes = document.getElementById('noteArea').value;
   localStorage.setItem('notes', notes);
-  alert('✅ Notes saved!');
+  showToast('✅ Notes saved!');
+
 }
 function showToast(message) {
   const toast = document.getElementById('toast');
