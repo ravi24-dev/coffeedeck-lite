@@ -1,7 +1,14 @@
-function showTab(tab) {
-  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active', 'hidden'));
-  document.getElementById(tab).classList.add('active');
+function showTab(tabId) {
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.classList.remove('active');
+    tab.classList.add('hidden');
+  });
+
+  const activeTab = document.getElementById(tabId);
+  activeTab.classList.remove('hidden');
+  activeTab.classList.add('active');
 }
+
 
 // === TEXT TOOLS ===
 function toUpper() {
